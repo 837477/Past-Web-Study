@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> Ajax </title>
+        <script src="js/jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    url:"http://13.209.117.30:5000/timeline/0",
+                    async: true,
+                    type: 'GET',
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                    dataType:"json",
+                    success:function(data){
+                        var temp = JSON.parse(data);
+                        
+                        for(var i=30; i<60; i++)
+                            {
+                                $("#test_div").append(temp[i].post);
+                                $("#test_div").append("<p>-----------------</p><br>");
+                            }
+                        console.log(JSON.parse(data));
+                    },
+                    error:function(data){
+                        console.log("Error");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="test_div"></div>
+    </body>
+</html>

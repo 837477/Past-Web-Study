@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> Ajax </title>
+        <script src="js/jquery.js"></script>
+        <script>
+            $(function(){
+                $("#btn").click(function(){ //id = "btn" 의 객체의 버튼을 클릭하면!
+                //아래의 에이작스가 실행되고!
+                $.ajax({
+                url:"http://13.209.117.30:5000/timeline/0",
+                async: true,
+                type: 'GET',
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                dataType:"json",
+                success:function(data){ //에이작스가 성공하면 아래의 함수가 실행됨.
+                var temp = JSON.parse(data);
+                
+                    for(var i=0; i<50; i++)
+                    {
+                        $("#ajaxValue").append(temp[i].post);
+                        $("#ajaxValue").append("<p>-----------------</p><br>");
+                    }
+                        console.log(JSON.parse(data));
+                },
+                error:function(data){
+                    console.log("Error");
+                }
+                    
+                });
+                    
+                });
+                
+            });
+        </script>
+        <style>
+            #ajaxValue{
+                margin: 20px;
+                padding: 20px;
+                color: blue;
+                text-align: center;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" id="btn" value="click1">
+        <article id="ajaxValue">
+
+        </article>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title> Ajax </title>
+        <script src="js/jquery.js"></script>
+        <script>
+            $(function(){
+                $("#btn").click(function(){ //id = "btn" 의 객체의 버튼을 클릭하면!
+                //아래의 에이작스가 실행되고!
+                $.ajax({
+                url:"https://www.campuspick.com/find/activity/list",
+                async: true,
+                type: 'GET',
+                //contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                dataType:"xhr",
+                success:function(data){ //에이작스가 성공하면 아래의 함수가 실행됨.
+                var temp = data;
+                
+                    for(var i=0; i<50; i++)
+                    {
+                        $("#ajaxValue").append(temp[i].title);
+                        $("#ajaxValue").append("<p>-----------------</p><br>");
+                    }
+                        console.log(data);
+                },
+                error:function(data){
+                    console.log("Error");
+                }
+                    
+                });
+                    
+                });
+                
+            });
+        </script>
+        <style>
+            #ajaxValue{
+                margin: 20px;
+                padding: 20px;
+                color: blue;
+                text-align: center;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <input type="button" id="btn" value="click1">
+        <article id="ajaxValue">
+
+        </article>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+html, body{
+    height: 100%;
+}
+body{
+    margin: 0;
+    overflow-x: hidden;
+    display: flex;
+}
+
+#hamburger{
+    display: none;
+}
+#hamburger ~ *
+{
+    position: absolute;
+    transition: transform 0.6s;
+}
+#hamburger:checked ~ *{
+    transform: translate3d(250px, 0, 0);
+}
+#hamburger ~ label{
+    font-size: 50px;
+    top: -14px; left: 8px;
+    cursor: pointer;
+    z-index: 1;
+}
+#hamburger ~ nav{
+    background: silver;
+    width: 250px;
+    left: -250px;
+    height: 100%;
+}
+#hamburger ~ nav *{
+    margin: 0; padding: 0;
+    color: white;
+}
+#hamburger ~ nav header{
+    background: teal;
+    padding: 1em;
+}
+#hamburger ~ nav a{
+    display: block;
+    text-decoration: none;
+    padding: 1em;
+}
+#hamburger ~ nav a:hover{
+    background: gray;
+}
+#content{
+    position: relative;
+    padding: 20em 25em 20em;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}

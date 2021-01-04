@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <ul>
+            {% for user in users %}
+                <li>{{ user }}</li>
+            {% endfor %}
+
+            {% if var %}
+            <h1>Hello {{ var }}!</h1>
+            {% endif %}
+        </ul>
+    </body>
+</html>
